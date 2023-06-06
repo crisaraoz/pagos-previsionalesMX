@@ -9,12 +9,27 @@
       <mat-label>Tasa de Cotización (%)</mat-label>
       <input matInput type="number" [(ngModel)]="tasaCotizacion" name="tasaCotizacion" placeholder="Ingrese la tasa de cotización" (ngModelChange)="calcularMontoPago()">
     </mat-form-field>
+
     <mat-form-field>
       <mat-label>Monto de Pago</mat-label>
       <input matInput [value]="montoPago" readonly>
     </mat-form-field>
+    <div class="campo-separador"></div>
+    <mat-form-field>
+      <mat-label>Régimen</mat-label>
+      <input matInput [(ngModel)]="regimen" name="regimen" placeholder="Ingrese el régimen" (ngModelChange)="calcularMontoPago()">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Categoría Laboral</mat-label>
+      <input matInput [(ngModel)]="categoriaLaboral" name="categoriaLaboral" placeholder="Ingrese la categoría laboral">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Empresa</mat-label>
+      <input matInput [(ngModel)]="empresa" name="empresa" placeholder="Ingrese la empresa">
+    </mat-form-field>
     <button mat-raised-button color="primary" (click)="realizarPago()">Realizar Pago</button>
   </form>
+  <small *ngIf="esRifRegimen || tasaCotizacion === 10">Al ingresar RIF como régimen, la tasa es 5%. De lo contrario, la tasa es 10%.</small>
   <div *ngIf="pagoRealizado" class="pago-exitoso">
     <p>Pago realizado con éxito.</p>
     <p>Salario Base de Cotización: {{ salarioBase }}</p>

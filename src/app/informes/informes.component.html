@@ -1,0 +1,18 @@
+<div>
+  <h2>Informes</h2>
+  <form (submit)="generarInforme()">
+    <mat-form-field appearance="fill">
+      <mat-label>Tipo de informe</mat-label>
+      <mat-select [(ngModel)]="tipoInforme">
+        <mat-option value="ventas">Ventas</mat-option>
+        <mat-option value="inventario">Inventario</mat-option>
+        <mat-option value="clientes">Clientes</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Generar informe</button>
+  </form>
+  <div *ngIf="informeGenerado" class="informe-generado mat-elevation-z4">
+    <h3>Informe generado:</h3>
+    <pre>{{ informe }}</pre>
+  </div>
+</div>
